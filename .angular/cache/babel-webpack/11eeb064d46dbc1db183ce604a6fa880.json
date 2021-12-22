@@ -1,0 +1,1 @@
+{"ast":null,"code":"export { PokemonDetailComponent } from './pokemon-detail/pokemon-detail.component';\nexport { PokemonListComponent } from './pokemon-list/pokemon-list.component';","map":null,"metadata":{},"sourceType":"module"}
