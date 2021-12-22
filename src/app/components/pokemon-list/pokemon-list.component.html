@@ -1,0 +1,51 @@
+<div class="container my-5">
+  <div class="row">
+    <div class="col-12">
+      <div class="row">
+        <h1 class="mb-4">Pokedex</h1>
+        <div *ngFor="let pokemon of pokemons ? pokemons: []; let i = index" class="col-md-4">
+          <div class="card mb-4 bg-{{getType(pokemon)}}" (click)=goToDetails(pokemon)>
+            <div class="card-body">
+              <mat-card>
+                <mat-card-header>
+                  <div mat-card-avatar>
+                    <img [src]="pokemon.sprite.front_default" alt="...">
+                  </div>
+                  <mat-card-title>
+                    <h3 class="font-{{getType(pokemon)}}">{{pokemon.name | titlecase}}</h3>
+                  </mat-card-title>
+                  <mat-card-subtitle>
+                    <span class="me-2"><b>Weight:</b></span>
+                    <span class="type-font badge border rounded-pill me-1">{{  pokemon.weight }}</span>
+                  </mat-card-subtitle>
+                </mat-card-header>
+
+                <mat-card-content>
+                  <span class="me-2"><b>Type:</b></span>
+                  <span *ngFor="let type of pokemon.types"
+                    class="badge border rounded-pill me-1 bg-{{type.type.name }}">
+                    {{type.type.name | titlecase}}
+                  </span>
+                  <br>
+                  <span class="me-2"><b>Abilities:</b></span>
+                  <span *ngFor="let abilityObj of pokemon.abilities" class="type-font badge border rounded-pill me-1">
+                    {{abilityObj.ability.name | titlecase}}
+                  </span>
+                </mat-card-content>
+              </mat-card>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm text-center">
+      <button class="btn btn-sm btn-secondary" (click)="getData()">
+        <div class="spinner-border spinner-border-sm" role="status" *ngIf="loading"></div>
+        {{loading ? 'Cargando...' : 'Cargar'}}
+      </button>
+    </div>
+  </div>
+</div>
